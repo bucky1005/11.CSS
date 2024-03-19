@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- 현재 파트에 활용할 예제들이 많음! -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* 일반적으로 상대 위치의 기준이 될 부모 요소(outer 또는 wrap 클래스)를 relative로 설정해두고,
+            부모 요소 안에 포함되는 자식 요소들을 absolute로 설정하여 배치 시킴.
+        */
+        .outer {
+            border: 1px solid red;
+            /* 상대 위치의 기준이 되도록 relative 설정 */
+            position: relative;
+        }
+
+        /* 
+            부모에 position: relative와 자신의 position: absolute를 설정하면,
+            웹 브라우저의 절대 위치가 아니라 부모의 원점에 대한 상대 위치를 의미한다.
+         */
+        .first {
+            width: 300px;
+            height: 300px;
+            background-color: yellow;
+            top: 0px;
+            left: 0px;
+            position: absolute;
+        }
+
+        .second {
+            width: 200px;
+            height: 200px;
+            background-color: yellowgreen;
+            top: 50px;
+            left: 50px;
+            /* 절대 위치: 좌상단 0,0을 기준으로 좌표의 위치를 결정 */
+            position: absolute;
+        }
+
+        .third {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            top: 100px;
+            left: 100px;
+            position: absolute;
+        }
+
+        .vis-test {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+        }
+
+        .vis-test1 {
+            background-color: red;
+        }
+
+        .vis-test2 {
+            background-color: yellow;
+
+            /* hidden: 요소가 보이지 않게 설정하지만, 공간을 차지하고 있음 */
+            visibility: hidden;
+            visibility: visible;
+
+            /* none: 요소를 보이지 않게 설정 + 공간도 차지하지 않음 */
+            display: none;
+            display: block;
+        }
+
+        .vis-test3 {
+            background-color: green;
+        }
+
+        .wrap {
+            position: relative;
+        }
+
+        .z-test {
+            width: 150px;
+            height: 150px;
+            border: 1px solid black;
+        }
+
+        .z-test1 {
+            background-color: yellow;
+            position: absolute;
+            top: 100px;
+            left: 100px;
+            z-index: 3;
+        }
+
+        .z-test2 {
+            background-color: red;
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            z-index: 2;
+        }
+
+        .z-test3 {
+            background-color: green;
+            position: absolute;
+            z-index: 1;
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>배치 관련 스타일</h1>
+    <h3>절대 위치와 상대 위치(중요 개념!)</h3>
+    <!-- div.outer>(div.positioning)*3 -->
+    <div class="outer">
+        <div class="positioning first"></div>
+        <div class="positioning second"></div>
+        <div class="positioning third"></div>
+    </div>
+
+    <hr>
+    <br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br>
+
+    <h3>visibility</h3>
+    <p>페이지에 특정 영역을 보이거나 보이지 않게 하는 속성</p>
+    <!-- div.vis-test.vis-test$*3 -->
+    <div class="vis-test vis-test1"></div>
+    <div class="vis-test vis-test2"></div>
+    <div class="vis-test vis-test3"></div>
+
+    <h3>z-index</h3>
+    <p>페이지 안의 요소들을 위로 쌓는 속성</p>
+    <!-- div.wrap>(div.z-test.ztest${요소$})*3 -->
+    <div class="wrap">
+        <div class="z-test z-test1">요소1</div>
+        <div class="z-test z-test2">요소2</div>
+        <div class="z-test z-test3">요소3</div>
+    </div>
+
+
+</body>
+
+</html>
